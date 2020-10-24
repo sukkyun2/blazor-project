@@ -1,0 +1,48 @@
+﻿@page "/students"
+
+@using DevExpress.Blazor;
+@using System.Threading;
+@using DxBlazorApplication.Data;
+
+@inject StudentService service; 
+
+<h3>StudentDataGrid</h3>
+
+<DxDataGrid DataAsync="@LoadDataAsync"
+            RowRemoving="@OnRowRemoving"
+            RowUpdating="@OnRowUpdating"
+            RowInserting="@OnRowInserting">
+    <DxDataGridCommandColumn Width="100px"/>
+    <DxDataGridColumn Field="@nameof(Student.Id)" Caption="Id" Visible="false" />
+    <DxDataGridColumn Field="@nameof(Student.Grade)" Caption="Grade" />
+    <DxDataGridColumn Field="@nameof(Student.Cclass)" Caption="Class" />
+    <DxDataGridColumn Field="@nameof(Student.No)" Caption="No" />
+    <DxDataGridColumn Field="@nameof(Student.Name)" Caption="Name" />
+    <DxDataGridColumn Field="@nameof(Student.Score)" Caption="Score" />
+
+</DxDataGrid>
+
+@code {
+
+    public async Task<IEnumerable<Student>> LoadDataAsync(CancellationToken ct = default)
+    {
+        var students = await service.GetStudentAllAsync();
+
+        return students;
+    }
+
+    public void OnRowRemoving(Student student)
+    {
+        service.Delete(student);
+    }
+
+    public void OnRowUpdating(Student student, IDictionary<string, object> newValue)
+    {
+        service.Update(student, newValue);
+    }
+
+    public void OnRowInserting(IDictionary<string, object> newValue)
+    {
+        service.Insert(newValue);
+    }
+}
