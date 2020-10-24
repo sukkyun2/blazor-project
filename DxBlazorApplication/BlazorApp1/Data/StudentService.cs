@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace DxBlazorApplication.Data
+namespace BlazorApp1.Data
 {
     public class StudentService
     {

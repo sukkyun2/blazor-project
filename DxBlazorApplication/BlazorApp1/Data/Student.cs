@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DxBlazorApplication.Data
+namespace BlazorApp1.Data
 {
     public class Student : INotifyPropertyChanged
     {

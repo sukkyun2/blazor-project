@@ -1,0 +1,13 @@
+﻿@page "/reportdesigner/students"
+
+<h3>StudentReportDesigner</h3> 
+
+<DxReportDesigner ReportUrl="@ReportUrl" Height="1000px" Width="100%" AllowMDI="true">
+    <DxReportDesignerWizardSettings UseFullscreenWizard="true" />
+</DxReportDesigner>
+
+
+@code {
+
+    string ReportUrl { get; set; } = "StudentReport";
+}

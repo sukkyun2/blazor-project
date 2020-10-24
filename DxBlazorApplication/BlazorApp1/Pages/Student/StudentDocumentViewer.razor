@@ -1,0 +1,15 @@
+﻿@page "/documentviewer/students"
+
+<h3 style="@h3_style">StudentDocumentViewer</h3> 
+<p><a class="btn btn-danger" style="@p_style" href="/reportdesigner/students">Edit</a></p>
+<br />
+<DxDocumentViewer ReportUrl="@ReportUrl" Height="1000px" Width="100%">
+    <DxDocumentViewerTabPanelSettings Width="180" />
+</DxDocumentViewer>
+
+@code {
+    string ReportUrl { get; set; } = "StudentReport";
+
+    string h3_style = "float : left;";
+    string p_style = "float : right; margin-bottom : inherit;";
+}
